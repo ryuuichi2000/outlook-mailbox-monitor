@@ -1,0 +1,32 @@
+name: self-test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  self-test:
+    # The tool targets Windows + classic Outlook; the checks below are pure
+    # local (no Outlook, no network), but check_ps_syntax.py needs powershell.exe,
+    # so the job runs on a Windows runner.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Logic self-test (no config, no Outlook, no network)
+        run: python run.py --self-test
+
+      - name: Desensitization / portability scan
+        run: python tests/test_desensitize.py
+
+      - name: PowerShell 5.1 syntax parse
+        run: python tests/check_ps_syntax.py

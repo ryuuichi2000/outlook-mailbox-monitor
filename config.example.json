@@ -1,0 +1,43 @@
+{
+  "_readme": "Copy this file to config.json, then replace every REPLACE_WITH_* value. Never commit config.json: it contains your mailbox address, quota and notification credentials.",
+  "_privacy": "This example contains NO real mailbox address, NO real quota and NO credentials. All values below are placeholders.",
+
+  "mailbox": {
+    "smtp_address": "REPLACE_WITH_YOUR_MAILBOX@example.com",
+    "archive_folder_name": "Inbox - REPLACE_WITH_YOUR_LABEL",
+    "pst_file_prefix": "REPLACE_WITH_YOUR_PREFIX",
+    "timezone_id": "China Standard Time"
+  },
+
+  "capacity": {
+    "quota_bytes": 0,
+    "trigger_ratio": 0.8,
+    "retention_hours": 48,
+    "disk_reserve_bytes": 134217728,
+    "pst_ceiling_bytes": 48318382080
+  },
+
+  "storage": {
+    "data_directory": "REPLACE_WITH_ABSOLUTE_OUTPUT_DIRECTORY",
+    "allow_cached_archive": true
+  },
+
+  "runtime": {
+    "powershell_path": "powershell.exe",
+    "launcher_command": [],
+    "probe_timeout_seconds": 180,
+    "archive_timeout_seconds": 900
+  },
+
+  "notify": {
+    "enabled": false,
+    "provider": "none",
+    "on_every_run": true,
+    "webhook_url": "",
+    "webhook_secret": "",
+    "payload_template": "",
+    "custom_command": "",
+    "mention_all": false,
+    "timeout_seconds": 15
+  }
+}

@@ -1,0 +1,33 @@
+# Local configuration - contains your mailbox address, quota and credentials.
+config.json
+
+# Runtime artifacts produced on the machine that runs the tool.
+*.pst
+*.jsonl
+delivered_events.json
+_runtime/
+events/
+probe_result.json
+*.out
+*.out.err
+*.log
+*.tmp
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
