@@ -20,7 +20,25 @@ import config
 import monitor
 
 
+def _force_utf8_stdio():
+    """Make stdout/stderr emit UTF-8 regardless of the console code page.
+
+    Windows consoles default to a legacy code page (cp1252, cp936, ...), while
+    every message this tool prints is UTF-8 JSON that may contain Chinese text.
+    Without this the process dies with UnicodeEncodeError on such machines --
+    e.g. a CI runner or a machine with a non-Chinese locale. errors='replace'
+    keeps a diagnostic message readable instead of raising.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding='utf-8', errors='replace')
+        except (AttributeError, ValueError):
+            # Python < 3.7, or a stream that cannot be reconfigured (pipe wrappers).
+            pass
+
+
 def main():
+    _force_utf8_stdio()
     ap = argparse.ArgumentParser(
         description='Outlook mailbox capacity monitor / local PST archiver')
     ap.add_argument('--config', default=None,
