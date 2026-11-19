@@ -1,5 +1,8 @@
 # Outlook 邮箱容量监测与本地归档工具
 
+[![self-test](https://github.com/ryuuichi2000/outlook-mailbox-monitor/actions/workflows/self-test.yml/badge.svg)](https://github.com/ryuuichi2000/outlook-mailbox-monitor/actions/workflows/self-test.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 一个**配置驱动、可离线运行、通知可选**的小工具：定期读取桌面版 Outlook 中某个
 邮箱的容量，达到设定阈值时，把收件箱顶层早于保留期的邮件**移动**到本地 PST
 文件，并可选择把结果推送到你自己的消息工具。
